@@ -30,4 +30,31 @@ export const achievementEntries: AchievementEntry[] = [
   { number: "03", title: "Add an achievement", context: "Community contribution or selected work", year: "Year" },
 ];
 
-export const techStack = ["TypeScript", "Next.js", "React", "Tailwind CSS", "Node.js", "CSS", "Python", "SQL", "Git", "Figma", "Vercel", "PostgreSQL", "Docker", "Kubernetes", "AWS", "GCP"];
+export const techStackIcons: Record<string, string> = {
+  TypeScript: "/assets/tech/typescript.svg",
+  "Next.js": "/assets/tech/nextjs.svg",
+  React: "/assets/tech/react.svg",
+  "Tailwind CSS": "/assets/tech/tailwind.svg",
+  "Node.js": "/assets/tech/node.svg",
+};
+
+export const techStackCards = [
+  { name: "TypeScript", src: "/assets/tech/typescript.svg" },
+  { name: "Next.js", src: "/assets/tech/nextjs.svg", monochrome: true },
+  { name: "React", src: "/assets/tech/react.svg" },
+  { name: "Tailwind CSS", src: "/assets/tech/tailwind.svg" },
+  { name: "Node.js", src: "/assets/tech/node.svg" },
+  { name: "Vercel", src: "/assets/tech/vercel.svg", lightMonochrome: true },
+  { name: "Developer tool", src: "/assets/tech/orange-tool.svg" },
+  { name: "Google", src: "/assets/tech/google.svg" },
+  { name: "Django", src: "/assets/tech/django.svg" },
+  { name: "Python", src: "/assets/tech/python.svg" },
+  { name: "Developer tool", src: "/assets/tech/tool-white-a.svg", lightMonochrome: true },
+  { name: "RSS", src: "/assets/tech/rss.svg" },
+  { name: "Solidity", src: "/assets/tech/solidity.svg", monochrome: true },
+  { name: "Developer tool", src: "/assets/tech/circle-tool.svg", monochrome: true },
+  { name: "Featured technology", src: "/assets/tech/featured-tool.svg" },
+  { name: "Flask", src: "/assets/tech/flask.svg", lightMonochrome: true },
+  { name: "HTML5", src: "/assets/tech/html5.svg" },
+  { name: "Nginx", src: "/assets/tech/nginx.svg" },
+];

@@ -12,3 +12,11 @@ export interface AchievementEntry {
   context: string;
   year: string;
 }
+
+export interface TarotCardReading {
+  name: string;
+  nameShort: string;
+  suit: string;
+  type: string;
+  meaningUpright: string;
+}

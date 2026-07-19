@@ -10,6 +10,7 @@ const navigationItems = [
   { href: "/experience", label: "Experience" },
   { href: "/achievements", label: "Achievements" },
   { href: "/blogs", label: "Blogs" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function MobileNavigation() {

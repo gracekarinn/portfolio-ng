@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { DailyTarotReading } from "./daily-tarot-reading";
 
 const tracks = [
   { title: "autumn", artist: "NIKI", href: "https://open.spotify.com/track/0W5o1Kxw1VlohSajPqeBMF", cover: "/niki-autumn.jpg", progress: "02:14 / 03:52" },
@@ -27,6 +28,7 @@ export function NowPlayingCard() {
           </article>
         ))}
       </div>
+      <DailyTarotReading />
     </div>
   );
 }

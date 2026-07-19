@@ -1,4 +1,5 @@
 import { HomepageEntryProvider } from "@/components/shared/homepage-entry-provider";
+import { SiteBackdrop } from "@/components/layout/site-backdrop";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import "./globals.css";
@@ -16,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-full antialiased">
-        <ThemeProvider><HomepageEntryProvider>{children}</HomepageEntryProvider></ThemeProvider>
+        <SiteBackdrop />
+        <div className="site-content"><ThemeProvider><HomepageEntryProvider>{children}</HomepageEntryProvider></ThemeProvider></div>
       </body>
     </html>
   );

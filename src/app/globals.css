@@ -298,8 +298,8 @@ body {
   .site-footer .text-right { text-align: center; }
   .site-footer > div:nth-child(2) { justify-content: center; }
   .hero-fun-card { grid-template-columns: 3.25rem 1px minmax(0, 1fr); gap: .85rem; padding: .85rem; }
-  .hero-tarot-scene { min-height: 23.5rem; }
-  .hero-tarot-card { width: min(calc(100% - 1.5rem), 17rem); }
+  .hero-tarot-scene { min-height: 22.5rem; }
+  .hero-tarot-card { width: min(calc(100% - 1.5rem), 15.5rem); }
   .hero-title-dog { width: 2.25rem; }
   .now-playing-card { grid-template-columns: 4rem minmax(0, 1fr); }
   .now-playing-cover { width: 4rem; height: 4rem; }

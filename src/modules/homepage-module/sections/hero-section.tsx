@@ -48,6 +48,7 @@ export function HeroSection() {
               <div className="hero-photo-mountain" aria-hidden="true"><Image src="/mountain.jpg" alt="" fill sizes="360px" className="object-cover" /></div>
               <span className="hero-photo-caption" aria-hidden="true">GRACE.JPG // 01</span>
             </div>
+            <span className="hero-scene-dog" aria-hidden="true"><Image src="/dog-transparent.png" alt="" fill sizes="52px" className="hero-dog-image object-contain" /></span>
           </div>
         </div>
         <div className="hero-tech-stack" aria-label="Active technology stack">

@@ -131,7 +131,7 @@ body {
 .contact-love { position: relative; width: 1.2rem; height: 1.2rem; overflow: hidden; }
 .hero-learning-badge { border: 1px solid color-mix(in srgb, var(--playful-green) 42%, var(--border)); border-radius: .25rem; padding: .22rem .48rem; color: var(--playful-green); background: color-mix(in srgb, var(--playful-green) 10%, transparent); }
 .hero-tarot-scene { min-height: 31rem; overflow: clip; }
-.hero-tarot-card { position: absolute; top: 50%; left: 50%; width: min(calc(100% - 1.25rem), 22.75rem); aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid color-mix(in srgb, var(--tarot) 72%, var(--border)); background: var(--card); box-shadow: 1rem 1rem 0 color-mix(in srgb, var(--accent) 10%, transparent), 0 1.5rem 3.5rem color-mix(in srgb, var(--foreground) 18%, transparent); transform: translate(-50%, -50%) rotate(2.25deg); animation: hero-photo-settle 760ms 110ms cubic-bezier(.2, .8, .2, 1) both; }
+.hero-tarot-card { position: absolute; top: 50%; left: 50%; width: min(calc(100% - 1.25rem), 22.75rem); aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid color-mix(in srgb, var(--tarot) 72%, var(--border)); background: var(--card); box-shadow: 1rem 1rem 0 color-mix(in srgb, var(--accent) 10%, transparent), 0 1.5rem 3.5rem color-mix(in srgb, var(--foreground) 18%, transparent); transform: translate(-50%, -50%); animation: hero-photo-settle 760ms 110ms cubic-bezier(.2, .8, .2, 1) both; }
 .hero-tarot-card::before { position: absolute; z-index: 1; inset: .55rem; border: 1px solid color-mix(in srgb, var(--tarot) 72%, transparent); pointer-events: none; content: ""; }
 .hero-tarot-card::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, color-mix(in srgb, var(--foreground) 18%, transparent), transparent 28%, transparent 68%, color-mix(in srgb, var(--foreground) 30%, transparent)); pointer-events: none; content: ""; }
 .hero-portrait-image { z-index: 0; object-fit: cover; object-position: center 22%; filter: saturate(.92) contrast(1.06); }
@@ -309,7 +309,7 @@ body {
 
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes hero-copy-reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes hero-photo-settle { from { opacity: 0; transform: translate(-50%, calc(-50% + 18px)) rotate(.5deg); } to { opacity: 1; transform: translate(-50%, -50%) rotate(2.25deg); } }
+@keyframes hero-photo-settle { from { opacity: 0; transform: translate(-50%, calc(-50% + 18px)); } to { opacity: 1; transform: translate(-50%, -50%); } }
 @keyframes star-twinkle { 0%, 100% { opacity: .45; transform: scale(.82) rotate(0deg); } 50% { opacity: 1; transform: scale(1.12) rotate(12deg); } }
 @keyframes dog-bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-4px) rotate(2deg); } }
 @keyframes tech-stack-drift { to { transform: translateX(-50%); } }

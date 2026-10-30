@@ -8,21 +8,21 @@ export function TarotCard() {
     >
       <div className="relative aspect-[2/3] w-full bg-white shadow-none dark:bg-[#1a1410] dark:shadow-[0_10px_40px_rgba(212,165,116,0.25)] border-[4px] sm:border-[5px] md:border-[6px] border-double border-[#3a2c1a] dark:border-[#d4a574] rounded-2xl p-2 sm:p-2.5 md:p-3">
         <div className="relative w-full h-full border border-[#3a2c1a]/70 dark:border-[#d4a574]/50 rounded-xl p-2.5 sm:p-3 md:p-4 flex flex-col">
-          <span className="absolute top-1 sm:top-1.5 left-1 sm:left-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-[0.625rem] sm:text-xs">
+          <span className="absolute top-1 sm:top-1.5 left-1 sm:left-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-xs sm:text-sm">
             ✦
           </span>
-          <span className="absolute top-1 sm:top-1.5 right-1 sm:right-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-[0.625rem] sm:text-xs">
+          <span className="absolute top-1 sm:top-1.5 right-1 sm:right-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-xs sm:text-sm">
             ✦
           </span>
-          <span className="absolute bottom-1 sm:bottom-1.5 left-1 sm:left-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-[0.625rem] sm:text-xs">
+          <span className="absolute bottom-1 sm:bottom-1.5 left-1 sm:left-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-xs sm:text-sm">
             ✦
           </span>
-          <span className="absolute bottom-1 sm:bottom-1.5 right-1 sm:right-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-[0.625rem] sm:text-xs">
+          <span className="absolute bottom-1 sm:bottom-1.5 right-1 sm:right-1.5 text-[#3a2c1a]/60 dark:text-[#d4a574]/60 text-xs sm:text-sm">
             ✦
           </span>
 
           <div className="text-center mb-1.5 sm:mb-2">
-            <div className="font-serif text-[#3a2c1a] dark:text-[#d4a574] text-[0.5rem] sm:text-[0.6rem] md:text-[0.65rem] tracking-[0.25em] uppercase">
+            <div className="font-serif text-[#3a2c1a] dark:text-[#d4a574] text-[0.65rem] sm:text-[0.75rem] md:text-[0.8rem] tracking-[0.25em] uppercase">
               0
             </div>
             <div className="mx-auto mt-0.5 sm:mt-1 h-px w-10 sm:w-12 md:w-16 bg-[#3a2c1a]/50 dark:bg-[#d4a574]/50" />

@@ -8,7 +8,7 @@ const navigationItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/experience", label: "Experience" },
-  { href: "/achievements", label: "Achievements" },
+  { href: "/achievements", label: "Honors & Awards" },
   { href: "/blogs", label: "Blogs" },
   { href: "/contact", label: "Contact" },
 ];
@@ -20,13 +20,14 @@ export function MobileNavigation() {
   const previousItem = navigationItems[(currentIndex - 1 + navigationItems.length) % navigationItems.length];
   const nextItem = navigationItems[(currentIndex + 1) % navigationItems.length];
   const currentItem = navigationItems[currentIndex];
+  const currentPathLabel = currentItem.href === "/achievements" ? "honors-awards" : currentItem.label.toLowerCase();
 
   return (
     <nav className="flex items-center justify-between font-mono text-sm" aria-label="Page navigation">
       <Link href={previousItem.href} className="focus-ring inline-flex size-9 items-center justify-center text-muted-foreground transition-colors hover:text-foreground" aria-label={`Go to ${previousItem.label}`}>
         <ChevronLeft size={17} strokeWidth={1.5} aria-hidden="true" />
       </Link>
-      <span className="text-muted-foreground">_{currentItem.label.toLowerCase()}</span>
+      <span className="text-muted-foreground">_{currentPathLabel}</span>
       <Link href={nextItem.href} className="focus-ring inline-flex size-9 items-center justify-center text-muted-foreground transition-colors hover:text-foreground" aria-label={`Go to ${nextItem.label}`}>
         <ChevronRight size={17} strokeWidth={1.5} aria-hidden="true" />
       </Link>

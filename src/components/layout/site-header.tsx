@@ -11,7 +11,7 @@ const navigationItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/experience", label: "Experience" },
-  { href: "/achievements", label: "Achievements" },
+  { href: "/achievements", label: "Honors & Awards" },
   { href: "/blogs", label: "Blogs" },
   { href: "/contact", label: "Contact" },
 ];
@@ -40,10 +40,11 @@ export function SiteHeader() {
       <div className="flex min-h-14 items-center px-5 sm:px-7">
         <nav className="hidden items-center gap-10 lg:flex" aria-label="Primary navigation">
           {navigationItems.map((item) => {
-            const path = item.label.toLowerCase();
-            const isActive = activePath === path;
+            const routePath = item.href === "/" ? "home" : item.href.slice(1);
+            const displayPath = item.href === "/achievements" ? "honors-awards" : routePath;
+            const isActive = activePath === routePath;
 
-            return <Link key={item.href} href={item.href} aria-current={isActive ? "page" : undefined} className={`focus-ring nav-link font-mono text-sm ${isActive ? "font-semibold text-muted-foreground" : "text-muted-foreground hover:text-foreground"}`}><span>_</span>{path}</Link>;
+            return <Link key={item.href} href={item.href} aria-current={isActive ? "page" : undefined} className={`focus-ring nav-link font-mono text-sm ${isActive ? "font-semibold text-muted-foreground" : "text-muted-foreground hover:text-foreground"}`}><span>_</span>{displayPath}</Link>;
           })}
         </nav>
         <div className="w-full lg:hidden"><MobileNavigation /></div>

@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import type { DailyTarotApiResponse } from "@/service/daily-tarot/interfaces";
 import tarotImageCards from "../data/rider-waite-images.json";
-import type { TarotCardReading } from "../interfaces";
-
-interface DailyTarotResponse {
-  card?: TarotCardReading;
-}
+import type {
+  TarotCardReading,
+} from "../interfaces";
 
 function getShortMeaning(meaning: string) {
   const [firstThought] = meaning.split(/[.;]/);
@@ -17,29 +16,36 @@ function getShortMeaning(meaning: string) {
 
 export function DailyTarotReading() {
   const [reading, setReading] = useState<TarotCardReading | null>(null);
-  const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   async function generateReading() {
-    setHasError(false);
+    setErrorMessage(null);
     setIsLoading(true);
 
     try {
       const response = await fetch("/api/daily-tarot");
 
       if (!response.ok) {
-        throw new Error("Unable to load daily tarot reading");
+        const errorPayload = (await response.json()) as DailyTarotApiResponse;
+        throw new Error(
+          errorPayload.message ?? "Unable to load daily tarot reading",
+        );
       }
 
-      const payload = (await response.json()) as DailyTarotResponse;
+      const payload = (await response.json()) as DailyTarotApiResponse;
 
       if (!payload.card) {
         throw new Error("Daily tarot reading is missing a card");
       }
 
       setReading(payload.card);
-    } catch {
-      setHasError(true);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Today's card is resting. Please try again soon.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -58,7 +64,9 @@ export function DailyTarotReading() {
         <span aria-hidden="true">$</span> {isLoading ? "drawing..." : reading ? "draw another card" : "draw a card"}
       </button>
       {isLoading ? <p className="daily-tarot-status">&gt; drawing today&apos;s card...</p> : null}
-      {hasError ? <p className="daily-tarot-status">&gt; today&apos;s card is resting. Try again soon.</p> : null}
+      {errorMessage ? (
+        <p className="daily-tarot-status">&gt; {errorMessage}</p>
+      ) : null}
       {reading ? (
         <div className="daily-tarot-result">
           {cardImage ? (

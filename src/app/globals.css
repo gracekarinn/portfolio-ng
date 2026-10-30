@@ -3,7 +3,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --font-geist-sans: Inter, ui-sans-serif, system-ui, sans-serif;
   --font-geist-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --background: hsl(40 38% 97%);
   --foreground: hsl(222 45% 11%);
@@ -44,9 +43,19 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-plus-jakarta-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-display: var(--font-plus-jakarta-sans);
+  --text-xs: .9375rem;
+  --text-sm: 1.0625rem;
+  --text-base: 1.1875rem;
+  --text-lg: 1.3125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 1.95rem;
+  --text-4xl: 2.375rem;
+  --text-5xl: 3.125rem;
+  --text-6xl: 3.875rem;
 }
 
 .dark {
@@ -77,7 +86,8 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: 1.0625rem;
+  font-family: var(--font-plus-jakarta-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   transition: background-color 180ms ease, color 180ms ease;
 }
@@ -106,12 +116,12 @@ body {
 .homepage-loader { display: grid; min-height: 100svh; place-items: center; padding: 1rem; background: var(--background); transition: opacity 300ms ease; }
 .homepage-loader-leaving { opacity: 0; }
 .homepage-loader-window { width: min(100%, 36rem); overflow: hidden; border: 1px solid var(--border); background: color-mix(in srgb, var(--card) 90%, transparent); box-shadow: 0 20px 80px color-mix(in srgb, var(--foreground) 10%, transparent); }
-.homepage-loader-bar { display: flex; min-height: 3.5rem; align-items: center; gap: 1.25rem; border-bottom: 1px solid var(--border); padding: 0 1.25rem; font-family: var(--font-geist-mono); font-size: .75rem; color: var(--muted-foreground); }
+.homepage-loader-bar { display: flex; min-height: 3.5rem; align-items: center; gap: 1.25rem; border-bottom: 1px solid var(--border); padding: 0 1.25rem; font-family: var(--font-geist-mono); font-size: .92rem; color: var(--muted-foreground); }
 .homepage-loader-content { min-height: 13rem; padding: 2rem 1.25rem; }
-.homepage-loader-button { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .6rem; margin-top: 1.5rem; border: 1px solid var(--accent); padding: 0 .9rem; font-family: var(--font-geist-mono); font-size: .75rem; color: var(--accent); transition: background-color 180ms ease, color 180ms ease; }
+.homepage-loader-button { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .6rem; margin-top: 1.5rem; border: 1px solid var(--accent); padding: 0 .9rem; font-family: var(--font-geist-mono); font-size: .92rem; color: var(--accent); transition: background-color 180ms ease, color 180ms ease; }
 .homepage-loader-button:hover { background: var(--accent); color: var(--accent-foreground); }
 
-.hero-section { display: block; min-height: calc(100svh - 12rem); }
+.hero-section { display: block; min-height: calc(100svh - 16rem); }
 .arcana-hero-section { position: relative; isolation: isolate; overflow: hidden; min-height: calc(100svh - 12rem); padding: clamp(1rem, 3vw, 2.5rem); background: color-mix(in srgb, var(--background) 96%, black); }
 .arcana-hero-shell { position: relative; z-index: 1; max-width: 84rem; min-height: min(44rem, calc(100svh - 14rem)); margin: auto; overflow: hidden; border: 1px solid color-mix(in srgb, var(--tarot) 55%, var(--border)); background: color-mix(in srgb, var(--card) 90%, var(--background)); box-shadow: inset 0 0 7rem color-mix(in srgb, black 48%, transparent); }
 .arcana-hero-shell::before, .arcana-hero-shell::after { position: absolute; z-index: 2; width: 1.5rem; height: 1.5rem; border-color: var(--tarot); content: ""; pointer-events: none; }
@@ -154,7 +164,7 @@ body {
 .arcana-profile-card footer span:last-child { font-family: var(--font-display); font-size: 1.25rem; }
 .arcana-hero-footer { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid color-mix(in srgb, var(--playful-green) 22%, transparent); padding: .55rem 1rem; font-size: .5rem; color: color-mix(in srgb, var(--playful-green) 70%, transparent); }
 .arcana-hero-extras { position: relative; z-index: 1; max-width: 84rem; margin: 1.5rem auto 0; border: 1px solid color-mix(in srgb, var(--tarot) 30%, var(--border)); background: color-mix(in srgb, var(--card) 82%, var(--background)); }
-.hero-canvas { position: relative; display: flex; min-height: calc(100svh - 12rem); max-width: none; flex-direction: column; overflow: hidden; border-bottom: 1px solid var(--border); background: transparent; }
+.hero-canvas { position: relative; display: flex; min-height: calc(100svh - 16rem); max-width: none; flex-direction: column; overflow: hidden; border-bottom: 1px solid var(--border); background: transparent; }
 .hero-canvas > :not(.hero-mountain-backdrop) { position: relative; z-index: 1; }
 .hero-intro-grid { position: relative; display: grid; min-height: 390px; align-items: center; gap: 2.5rem; padding: 3.25rem 1.4rem 2.4rem; }
 .hero-mobile-terminal { margin-bottom: -1rem; }
@@ -200,13 +210,13 @@ body {
   mask-image: linear-gradient(to bottom, black, transparent 88%);
   opacity: .28;
 }
-.tarot-session-log { max-width: 31rem; margin-top: 1.5rem; overflow: hidden; border: 1px solid color-mix(in srgb, var(--tarot) 45%, var(--border)); padding: .85rem 1rem; background: color-mix(in srgb, var(--card) 82%, var(--background)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foreground) 3%, transparent); font-family: var(--font-geist-mono); font-size: clamp(.62rem, 1.8vw, .76rem); line-height: 1.7; color: var(--muted-foreground); }
+.tarot-session-log { max-width: 31rem; margin-top: 1.5rem; overflow: hidden; border: 1px solid color-mix(in srgb, var(--tarot) 45%, var(--border)); padding: .85rem 1rem; background: color-mix(in srgb, var(--card) 82%, var(--background)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foreground) 3%, transparent); font-family: var(--font-geist-mono); font-size: clamp(.8rem, 1.9vw, .96rem); line-height: 1.7; color: var(--muted-foreground); }
 .tarot-session-label { color: var(--muted-foreground); font-size: .82em; letter-spacing: .12em; text-transform: uppercase; }
 .tarot-session-command, .tarot-session-prompt { margin-top: .45rem; color: var(--foreground); }
 .tarot-session-command > span, .tarot-session-prompt > span { color: var(--accent); }
 .tarot-session-output { display: grid; gap: .15rem; margin-top: .45rem; }
 .tarot-session-output span { color: var(--tarot); }
-.daily-tarot-reading { max-width: 42rem; margin-top: 1.25rem; border-top: 1px solid var(--border); padding-top: 1rem; font-family: var(--font-geist-mono); font-size: clamp(.62rem, 1.8vw, .74rem); line-height: 1.65; color: var(--muted-foreground); }
+.daily-tarot-reading { max-width: 42rem; margin-top: 1.25rem; border-top: 1px solid var(--border); padding-top: 1rem; font-family: var(--font-geist-mono); font-size: clamp(.8rem, 1.9vw, .94rem); line-height: 1.7; color: var(--muted-foreground); }
 .daily-tarot-command { color: var(--foreground); }
 .daily-tarot-command span, .daily-tarot-output span { color: var(--playful-green); }
 .daily-tarot-generate { margin-top: .5rem; border: 1px solid color-mix(in srgb, var(--tarot) 60%, var(--border)); padding: .42rem .6rem; color: var(--tarot); transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease; }
@@ -222,7 +232,7 @@ body {
 .daily-tarot-output p { overflow-wrap: anywhere; }
 .daily-tarot-output em { font-style: normal; color: var(--tarot); }
 .terminal-cursor { color: var(--accent); animation: blink 1.2s steps(2, jump-none) infinite; }
-.action-button { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; gap: .65rem; border-radius: .5rem; padding: .75rem 1.1rem; font-size: .875rem; font-weight: 600; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease; }
+.action-button { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; gap: .65rem; border-radius: .5rem; padding: .75rem 1.1rem; font-size: 1.0625rem; font-weight: 600; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease; }
 .action-button-primary { background: var(--primary); color: var(--primary-foreground); }
 .action-button-primary:hover { opacity: .9; transform: translateY(-2px); }
 .action-button-secondary { border: 1px solid var(--border); background: var(--card); color: var(--foreground); }
@@ -236,25 +246,25 @@ body {
 .hero-tarot-card::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, color-mix(in srgb, var(--foreground) 18%, transparent), transparent 28%, transparent 68%, color-mix(in srgb, var(--foreground) 30%, transparent)); pointer-events: none; content: ""; }
 .hero-portrait-image { z-index: 0; object-fit: cover; object-position: center 22%; filter: saturate(.92) contrast(1.06); }
 .hero-photo-mountain { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; height: 26%; overflow: hidden; mix-blend-mode: multiply; opacity: .72; }
-.hero-photo-caption { position: absolute; z-index: 2; right: .9rem; bottom: .85rem; border: 1px solid color-mix(in srgb, white 55%, transparent); padding: .28rem .42rem; background: color-mix(in srgb, var(--foreground) 65%, transparent); font-family: var(--font-geist-mono); font-size: .52rem; letter-spacing: .08em; color: hsl(40 38% 97%); }
+.hero-photo-caption { position: absolute; z-index: 2; right: .9rem; bottom: .85rem; border: 1px solid color-mix(in srgb, white 55%, transparent); padding: .28rem .42rem; background: color-mix(in srgb, var(--foreground) 65%, transparent); font-family: var(--font-geist-mono); font-size: .8rem; letter-spacing: .08em; color: hsl(40 38% 97%); }
 .hero-now-playing { margin-top: clamp(2rem, 5vw, 4rem); border-top: 1px solid var(--border); padding: 1.25rem 1.15rem clamp(3rem, 6vw, 5.5rem); }
 .now-playing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: .75rem; margin-top: .8rem; }
 .now-playing-card { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: .9rem; min-width: 0; border: 1px solid var(--border); padding: .75rem; background: color-mix(in srgb, var(--card) 78%, transparent); transition: border-color 180ms ease, transform 180ms ease; }
 .now-playing-card:hover { border-color: color-mix(in srgb, var(--accent) 65%, var(--border)); transform: translateY(-2px); }
 .now-playing-cover { width: 4.5rem; height: 4.5rem; object-fit: cover; }
-.now-playing-command { font-family: var(--font-geist-mono); font-size: .58rem; color: var(--muted-foreground); }
-.now-playing-status { display: inline-flex; align-items: center; gap: .35rem; margin-bottom: .28rem; font-family: var(--font-geist-mono); font-size: .52rem; letter-spacing: .08em; text-transform: uppercase; color: var(--playful-green); }
+.now-playing-command { font-family: var(--font-geist-mono); font-size: .78rem; color: var(--muted-foreground); }
+.now-playing-status { display: inline-flex; align-items: center; gap: .35rem; margin-bottom: .28rem; font-family: var(--font-geist-mono); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: var(--playful-green); }
 .now-playing-status > span { display: inline-flex; align-items: end; gap: 2px; height: .62rem; }
 .now-playing-status i { display: block; width: 2px; height: .35rem; background: currentColor; animation: equalizer-pulse 850ms ease-in-out infinite alternate; }
 .now-playing-status i:nth-child(2) { height: .62rem; animation-delay: 180ms; }
 .now-playing-status i:nth-child(3) { height: .45rem; animation-delay: 360ms; }
-.now-playing-card h2 { margin-top: .3rem; font-family: var(--font-display); font-size: 1.45rem; line-height: .9; color: var(--foreground); }
-.now-playing-artist { margin-top: .2rem; font-family: var(--font-geist-mono); font-size: .68rem; color: var(--muted-foreground); }
-.now-playing-progress { display: flex; align-items: center; gap: .55rem; margin-top: .7rem; font-family: var(--font-geist-mono); font-size: .55rem; color: var(--muted-foreground); }
+.now-playing-card h2 { margin-top: .3rem; overflow-wrap: anywhere; font-family: var(--font-display); font-size: 1.75rem; line-height: 1.05; color: var(--foreground); }
+.now-playing-artist { margin-top: .2rem; font-family: var(--font-geist-mono); font-size: .95rem; color: var(--muted-foreground); }
+.now-playing-progress { display: flex; align-items: center; gap: .55rem; margin-top: .7rem; font-family: var(--font-geist-mono); font-size: .82rem; color: var(--muted-foreground); }
 .now-playing-bar { position: relative; display: block; width: 6.2rem; height: 1px; background: color-mix(in srgb, var(--muted-foreground) 35%, transparent); }
 .now-playing-bar::before { position: absolute; top: 0; left: 0; width: 57%; height: 1px; background: var(--accent); content: ""; }
 .now-playing-bar i { position: absolute; top: 50%; left: 57%; width: .4rem; height: .4rem; border-radius: 50%; background: var(--accent); transform: translate(-50%, -50%); }
-.now-playing-link { display: inline-flex; align-items: center; gap: .35rem; margin-top: .65rem; font-family: var(--font-geist-mono); font-size: .6rem; color: var(--accent); transition: color 180ms ease, transform 180ms ease; }
+.now-playing-link { display: inline-flex; align-items: center; gap: .35rem; margin-top: .65rem; font-family: var(--font-geist-mono); font-size: .88rem; color: var(--accent); transition: color 180ms ease, transform 180ms ease; }
 .now-playing-link:hover { color: var(--foreground); transform: translateX(2px); }
 .tarot-card-corners { position: absolute; inset: .45rem; border: 1px solid color-mix(in srgb, var(--tarot) 58%, transparent); }
 .tarot-starburst { position: relative; display: grid; width: 4.1rem; height: 4.1rem; place-items: center; margin-top: 2.1rem; border: 1px solid color-mix(in srgb, var(--tarot) 55%, transparent); border-radius: 50%; }
@@ -265,7 +275,7 @@ body {
 .tarot-starburst span:nth-child(2) { transform: rotate(-45deg); }
 .tarot-starburst span:nth-child(3), .tarot-starburst span:nth-child(4) { width: 1rem; height: 1rem; border: 1px solid var(--tarot); border-radius: 50%; background: var(--card); }
 .tarot-sun { position: relative; width: .5rem; height: .5rem; margin-top: 2.3rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 .32rem color-mix(in srgb, var(--accent) 12%, transparent); }
-.tarot-card-title { position: relative; margin-top: auto; font-family: var(--font-geist-mono); font-size: .5rem; letter-spacing: .18em; color: var(--tarot); }
+.tarot-card-title { position: relative; margin-top: auto; font-family: var(--font-geist-mono); font-size: .85rem; letter-spacing: .18em; color: var(--tarot); }
 .scene-spark { position: absolute; z-index: 2; color: var(--accent); font-size: 1.5rem; animation: star-twinkle 2.8s ease-in-out infinite; }
 .scene-spark-one { top: .45rem; left: 7%; }
 .scene-spark-two { top: 50%; right: 4%; color: var(--playful-blue); animation-delay: .65s; }
@@ -308,12 +318,12 @@ body {
 .fun-card-art { position: relative; width: 3.9rem; height: 3.9rem; justify-self: center; transition: transform 180ms ease; }
 .hero-fun-card:hover .fun-card-art { transform: rotate(-6deg) scale(1.08); }
 .fun-card-divider { align-self: stretch; border-left: 1px dashed color-mix(in srgb, var(--border) 88%, transparent); }
-.hero-preview-index { margin-bottom: .35rem; font-family: var(--font-geist-mono); font-size: .62rem; color: var(--muted-foreground); }
+.hero-preview-index { margin-bottom: .35rem; font-family: var(--font-geist-mono); font-size: .9rem; color: var(--muted-foreground); }
 .hero-preview-index span { display: inline-flex; min-width: 1.7rem; justify-content: center; border-radius: .3rem; padding: .17rem .3rem; background: var(--accent); color: var(--accent-foreground); }
-.hero-preview-path { font-family: var(--font-geist-mono); font-size: .83rem; font-weight: 600; line-height: 1.2; color: var(--foreground); }
-.hero-preview-description { max-width: 22rem; margin-top: .45rem; font-family: var(--font-geist-mono); font-size: .65rem; line-height: 1.45; color: var(--muted-foreground); }
-.fun-card-tag { display: inline-flex; margin-top: .55rem; border: 1px solid color-mix(in srgb, var(--border) 88%, transparent); padding: .18rem .35rem; font-family: var(--font-geist-mono); font-size: .55rem; color: var(--accent); }
-.fun-card-menu { align-self: center; font-family: var(--font-geist-mono); font-size: .75rem; letter-spacing: .16em; color: var(--muted-foreground); }
+.hero-preview-path { font-family: var(--font-geist-mono); font-size: 1rem; font-weight: 600; line-height: 1.35; color: var(--foreground); }
+.hero-preview-description { max-width: 22rem; margin-top: .45rem; font-family: var(--font-geist-mono); font-size: 1rem; line-height: 1.65; color: var(--muted-foreground); }
+.fun-card-tag { display: inline-flex; margin-top: .55rem; border: 1px solid color-mix(in srgb, var(--border) 88%, transparent); padding: .18rem .35rem; font-family: var(--font-geist-mono); font-size: .85rem; color: var(--accent); }
+.fun-card-menu { align-self: center; font-family: var(--font-geist-mono); font-size: .92rem; letter-spacing: .16em; color: var(--muted-foreground); }
 .fun-card-01 { border-color: color-mix(in srgb, var(--accent) 48%, var(--border)); }
 .fun-card-02 { border-color: color-mix(in srgb, var(--playful-green) 52%, var(--border)); }
 .fun-card-02 .hero-preview-index span { background: var(--playful-green); color: var(--card); }
@@ -322,10 +332,10 @@ body {
 .fun-card-04 { border-color: color-mix(in srgb, var(--tarot) 60%, var(--border)); }
 .fun-card-04 .hero-preview-index span { background: var(--tarot); color: var(--card); }
 .site-footer { display: grid; gap: 1.25rem; margin-top: auto; padding: 1rem; background: color-mix(in srgb, var(--background) 94%, transparent); }
-.hero-social { display: inline-flex; min-width: 1.8rem; height: 1.8rem; align-items: center; justify-content: center; border: 1px solid var(--border); font-size: .65rem; color: var(--foreground); }
+.hero-social { display: inline-flex; min-width: 1.8rem; height: 1.8rem; align-items: center; justify-content: center; border: 1px solid var(--border); font-size: .75rem; color: var(--foreground); }
 .hero-tech-stack { width: 100%; margin-top: 0; border-top: 1px solid var(--border); }
 .tech-stack-section { width: 100%; }
-.hero-tech-stack-command { padding: .8rem 1rem .2rem; font-family: var(--font-geist-mono); font-size: .65rem; color: var(--muted-foreground); }
+.hero-tech-stack-command { padding: .8rem 1rem .2rem; font-family: var(--font-geist-mono); font-size: .92rem; color: var(--muted-foreground); }
 .tech-stack-viewport { width: 100%; overflow: hidden; padding: .85rem 1rem 1rem; }
 .tech-stack-track { display: flex; width: max-content; animation: tech-stack-drift 18s linear infinite; will-change: transform; }
 .tech-stack-viewport:hover .tech-stack-track { animation-play-state: paused; }
@@ -338,50 +348,50 @@ body {
 .dark .tech-stack-icon-light-monochrome { filter: brightness(0) invert(1); }
 
 .portfolio-section { padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 5vw, 4.5rem) clamp(4.5rem, 8vw, 7rem); border-bottom: 1px solid var(--border); background: transparent; }
-.section-command { display: flex; align-items: center; justify-content: space-between; border-block: 1px solid var(--border); padding: .8rem 0; font-family: var(--font-geist-mono); font-size: .7rem; color: var(--muted-foreground); }
+.section-command { display: flex; align-items: center; justify-content: space-between; border-block: 1px solid var(--border); padding: .8rem 0; font-family: var(--font-geist-mono); font-size: .98rem; color: var(--muted-foreground); }
 .section-heading { max-width: 42rem; margin-top: 2.5rem; }
-.section-eyebrow { font-family: var(--font-geist-mono); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-.section-heading h2 { margin-top: .8rem; font-size: clamp(2.8rem, 5vw, 5.25rem); line-height: .95; letter-spacing: -.045em; color: var(--foreground); }
-.section-heading > p:last-child { max-width: 36rem; margin-top: 1rem; font-size: .95rem; line-height: 1.75; color: var(--muted-foreground); }
+.section-eyebrow { font-family: var(--font-geist-mono); font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.section-heading h2 { margin-top: .8rem; font-size: clamp(3rem, 5.25vw, 5.5rem); line-height: .98; letter-spacing: -.045em; color: var(--foreground); }
+.section-heading > p:last-child { max-width: 36rem; margin-top: 1rem; font-size: 1.0625rem; line-height: 1.75; color: var(--muted-foreground); }
 .contact-layout { display: grid; max-width: 58rem; gap: 2.5rem; margin-top: 2.5rem; }
 .contact-heading { margin-top: 0; }
-.contact-email-action { display: inline-flex; min-height: 3rem; align-items: center; gap: .6rem; margin-top: 1.75rem; border: 1px solid var(--tarot); padding: .7rem 1rem; font-family: var(--font-geist-mono); font-size: .78rem; color: var(--foreground); transition: background-color 180ms ease, color 180ms ease; }
+.contact-email-action { display: inline-flex; min-height: 3rem; align-items: center; gap: .6rem; margin-top: 1.75rem; border: 1px solid var(--tarot); padding: .7rem 1rem; font-family: var(--font-geist-mono); font-size: 1.0625rem; color: var(--foreground); transition: background-color 180ms ease, color 180ms ease; }
 .contact-email-action:hover { background: var(--tarot); color: var(--background); }
 .contact-links { display: grid; gap: .75rem; }
 .contact-link { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr) auto; align-items: center; gap: 1rem; border: 1px solid var(--border); padding: 1rem; background: color-mix(in srgb, var(--card) 72%, transparent); transition: border-color 180ms ease, transform 180ms ease; }
 .contact-link:hover { border-color: var(--tarot); transform: translateX(.25rem); }
 .contact-link-icon { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid color-mix(in srgb, var(--tarot) 42%, var(--border)); color: var(--tarot); }
 .contact-link strong, .contact-link small { display: block; }
-.contact-link strong { font-family: var(--font-display); font-size: 1.3rem; line-height: 1; color: var(--foreground); }
-.contact-link small { margin-top: .35rem; font-family: var(--font-geist-mono); font-size: .65rem; color: var(--muted-foreground); }
+.contact-link strong { font-family: var(--font-display); font-size: 1.4rem; line-height: 1.1; color: var(--foreground); }
+.contact-link small { margin-top: .35rem; font-family: var(--font-geist-mono); font-size: .92rem; color: var(--muted-foreground); }
 .contact-form { width: 100%; max-width: 48rem; margin: 2.5rem auto 0; font-family: var(--font-geist-mono); color: var(--foreground); }
 .contact-form-title { display: flex; align-items: center; gap: .8rem; border-bottom: 1px solid color-mix(in srgb, var(--tarot) 24%, var(--border)); padding-bottom: 1rem; }
 .contact-form-title > span { display: grid; width: 2.2rem; height: 2.2rem; place-items: center; border: 1px solid color-mix(in srgb, var(--tarot) 58%, var(--border)); color: var(--tarot); }
-.contact-form-title h2 { font-family: var(--font-geist-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tarot); }
-.contact-form-title p { margin-top: .25rem; font-size: .67rem; color: var(--muted-foreground); }
-.contact-form-command { margin-top: 0; font-size: .85rem; color: var(--playful-green); opacity: .85; }
+.contact-form-title h2 { font-family: var(--font-geist-mono); font-size: 1.05rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tarot); }
+.contact-form-title p { margin-top: .25rem; font-size: .98rem; color: var(--muted-foreground); }
+.contact-form-command { margin-top: 0; font-size: 1.02rem; color: var(--playful-green); opacity: .85; }
 .contact-form-command span { color: inherit; }
 .contact-form-grid { display: block; }
-.contact-terminal-field { display: grid; grid-template-columns: minmax(8.5rem, max-content) minmax(0, 1fr); align-items: baseline; gap: .75rem; margin-top: 1rem; font-family: inherit; font-size: .75rem; color: var(--foreground); }
+.contact-terminal-field { display: grid; grid-template-columns: minmax(8.5rem, max-content) minmax(0, 1fr); align-items: baseline; gap: .75rem; margin-top: 1rem; font-family: inherit; font-size: 1.02rem; color: var(--foreground); }
 .contact-terminal-field > span { color: var(--playful-green); }
-.contact-form input, .contact-form textarea { width: 100%; border: 0; border-radius: 0; padding: 0; background: transparent; font-family: inherit; font-size: .78rem; line-height: 1.6; color: var(--foreground); }
+.contact-form input, .contact-form textarea { width: 100%; border: 0; border-radius: 0; padding: 0; background: transparent; font-family: inherit; font-size: 1.0625rem; line-height: 1.6; color: var(--foreground); }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: color-mix(in srgb, var(--muted-foreground) 68%, transparent); }
 .contact-terminal-field:has(textarea) { align-items: start; }
 .contact-form textarea { min-height: 8rem; resize: vertical; }
 .contact-form input:focus, .contact-form textarea:focus { outline: 1px solid color-mix(in srgb, var(--playful-green) 62%, transparent); outline-offset: 3px; }
 .contact-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.contact-submit { margin-top: 1.5rem; border: 0; padding: 0; background: transparent; font-family: inherit; font-size: .76rem; letter-spacing: .05em; color: var(--playful-green); transition: color 180ms ease, transform 180ms ease; }
+.contact-submit { margin-top: 1.5rem; border: 0; padding: 0; background: transparent; font-family: inherit; font-size: 1.03rem; letter-spacing: .05em; color: var(--playful-green); transition: color 180ms ease, transform 180ms ease; }
 .contact-submit:hover:not(:disabled) { color: var(--foreground); transform: translateX(.2rem); }
 .contact-submit:disabled { cursor: wait; opacity: .65; }
-.contact-terminal-output { display: grid; gap: .3rem; margin-top: 1.25rem; border-top: 1px dashed color-mix(in srgb, var(--playful-green) 34%, var(--border)); padding-top: 1rem; font-size: .68rem; line-height: 1.55; color: var(--muted-foreground); }
+.contact-terminal-output { display: grid; gap: .3rem; margin-top: 1.25rem; border-top: 1px dashed color-mix(in srgb, var(--playful-green) 34%, var(--border)); padding-top: 1rem; font-size: .98rem; line-height: 1.7; color: var(--muted-foreground); }
 .contact-terminal-output p:first-child { color: var(--playful-green); }
 .contact-terminal-output-success p:nth-last-child(2) { color: var(--playful-green); }
 .contact-terminal-output-error p:last-child { color: var(--accent); }
-.contact-form-hint { margin-top: 1rem; font-size: .62rem; color: var(--muted-foreground); }
-.contact-terminal { --terminal-background: color-mix(in srgb, var(--card) 96%, var(--background)); --terminal-border: color-mix(in srgb, var(--playful-green) 34%, var(--border)); --terminal-rule: var(--border); --terminal-text: var(--foreground); --terminal-muted: var(--muted-foreground); --terminal-accent: var(--playful-green); width: 100%; max-width: 56rem; margin: 2.5rem auto 0; overflow: hidden; border: 1px solid var(--terminal-border); border-radius: .5rem; background: var(--terminal-background); box-shadow: none; font-family: var(--font-geist-mono); font-size: .78rem; line-height: 1.7; color: var(--terminal-text); }
+.contact-form-hint { margin-top: 1rem; font-size: .92rem; color: var(--muted-foreground); }
+.contact-terminal { --terminal-background: color-mix(in srgb, var(--card) 96%, var(--background)); --terminal-border: color-mix(in srgb, var(--playful-green) 34%, var(--border)); --terminal-rule: var(--border); --terminal-text: var(--foreground); --terminal-muted: var(--muted-foreground); --terminal-accent: var(--playful-green); width: 100%; max-width: 56rem; margin: 2.5rem auto 0; overflow: hidden; border: 1px solid var(--terminal-border); border-radius: .5rem; background: var(--terminal-background); box-shadow: none; font-family: var(--font-geist-mono); font-size: 1.02rem; line-height: 1.7; color: var(--terminal-text); }
 .dark .contact-terminal { --terminal-background: hsl(222 47% 7%); --terminal-border: color-mix(in srgb, var(--playful-green) 28%, hsl(222 47% 7%)); --terminal-rule: hsl(214 26% 18%); --terminal-text: hsl(42 25% 88%); --terminal-muted: hsl(213 18% 62%); --terminal-accent: hsl(102 48% 58%); box-shadow: 0 1.5rem 3rem color-mix(in srgb, black 28%, transparent); }
 .contact-terminal-message { max-width: 56rem; }
-.contact-terminal-header { position: relative; display: flex; align-items: center; justify-content: center; min-height: 2.25rem; border-bottom: 1px solid var(--terminal-rule); padding: .5rem 1rem; font-size: .62rem; color: var(--terminal-muted); }
+.contact-terminal-header { position: relative; display: flex; align-items: center; justify-content: center; min-height: 2.25rem; border-bottom: 1px solid var(--terminal-rule); padding: .5rem 1rem; font-size: .9rem; color: var(--terminal-muted); }
 .contact-terminal-dots { position: absolute; left: 1rem; display: flex; gap: .35rem; }
 .contact-terminal-dots i { width: .6rem; height: .6rem; border-radius: 50%; background: hsl(3 83% 63%); }
 .contact-terminal-dots i:nth-child(2) { background: hsl(42 88% 59%); }
@@ -396,9 +406,9 @@ body {
 .contact-terminal-line-success { color: var(--terminal-accent); }
 .contact-terminal-input { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; align-items: start; gap: .65rem; border-top: 1px solid var(--terminal-rule); padding: .85rem 1.35rem; color: var(--terminal-accent); }
 .contact-terminal-input > span { padding-top: .25rem; white-space: nowrap; }
-.contact-terminal-input input, .contact-terminal-input textarea { width: 100%; min-width: 0; border: 0; padding: .2rem 0; background: transparent; font: inherit; line-height: 1.6; color: var(--terminal-text); overflow-wrap: anywhere; resize: none; }
+.contact-terminal-input input:not(.contact-honeypot), .contact-terminal-input textarea { width: 100%; min-width: 0; border: 0; padding: .2rem 0; background: transparent; font: inherit; line-height: 1.6; color: var(--terminal-text); overflow-wrap: anywhere; resize: none; }
 .contact-terminal-input input::placeholder, .contact-terminal-input textarea::placeholder { color: color-mix(in srgb, var(--terminal-muted) 78%, transparent); }
-.contact-terminal-input input:focus, .contact-terminal-input textarea:focus { outline: 1px solid color-mix(in srgb, var(--terminal-accent) 65%, transparent); outline-offset: 3px; }
+.contact-terminal-input input:not(.contact-honeypot):focus, .contact-terminal-input textarea:focus { outline: 1px solid color-mix(in srgb, var(--terminal-accent) 65%, transparent); outline-offset: 3px; }
 .contact-terminal-input button { border: 0; padding: .2rem 0; background: transparent; font: inherit; color: var(--terminal-accent); transition: color 180ms ease; white-space: nowrap; }
 .contact-terminal-input button:hover { color: var(--terminal-text); }
 .contact-terminal-input-message { grid-template-columns: minmax(0, 1fr) max-content; }
@@ -406,32 +416,32 @@ body {
 .contact-terminal-input-message textarea { width: min(100%, 40rem); min-height: 8rem; max-height: 15rem; overflow-y: auto; resize: vertical; }
 .contact-terminal-input-message button { justify-self: end; }
 .contact-terminal-wait, .contact-terminal-step { padding: 0 1.35rem 1rem; color: var(--terminal-muted); }
-.contact-terminal-step { font-size: .62rem; }
-.experience-timeline { position: relative; display: grid; gap: 1.25rem; max-width: 70rem; margin-top: 3rem; padding-left: 1.8rem; }
-.experience-timeline::before { position: absolute; top: .4rem; bottom: .4rem; left: .45rem; border-left: 1px dashed color-mix(in srgb, var(--accent) 55%, var(--border)); content: ""; }
-.experience-entry { position: relative; display: grid; gap: .8rem; }
-.experience-marker { position: absolute; top: 1.2rem; left: -1.8rem; z-index: 1; display: grid; width: .95rem; height: .95rem; place-items: center; border: 1px solid var(--accent); border-radius: 50%; background: var(--background); color: var(--accent); }
-.experience-period { font-family: var(--font-geist-mono); font-size: .68rem; color: var(--accent); }
-.experience-card { border: 1px solid var(--border); border-radius: .6rem; padding: 1.25rem; background: color-mix(in srgb, var(--card) 82%, transparent); transition: border-color 180ms ease, transform 180ms ease; }
-.experience-card:hover { border-color: color-mix(in srgb, var(--accent) 65%, var(--border)); transform: translateX(.25rem); }
-.experience-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-.experience-card h3, .achievement-card h3 { font-family: var(--font-display); font-size: 1.65rem; line-height: 1; color: var(--foreground); }
-.experience-card-top p { margin-top: .4rem; font-family: var(--font-geist-mono); font-size: .67rem; color: var(--playful-green); }
-.experience-card-top > span { font-family: var(--font-geist-mono); font-size: .7rem; color: var(--muted-foreground); }
-.experience-summary { max-width: 48rem; margin-top: 1rem; font-size: .86rem; line-height: 1.65; color: var(--muted-foreground); }
+.contact-terminal-step { font-size: .9rem; }
+.experience-timeline { position: relative; display: grid; gap: 1.4rem; max-width: 74rem; margin-top: 2.75rem; padding-left: 1.8rem; }
+.experience-timeline::before { position: absolute; top: .4rem; bottom: .4rem; left: .45rem; border-left: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border)); content: ""; }
+.experience-entry { position: relative; display: grid; gap: .8rem; min-width: 0; }
+.experience-marker { position: absolute; top: 1.45rem; left: -1.6rem; z-index: 1; width: .5rem; height: .5rem; border: 2px solid var(--background); border-radius: 50%; background: var(--muted-foreground); box-shadow: 0 0 0 1px var(--border); }
+.experience-entry-current .experience-marker { background: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent); }
+.experience-period { width: fit-content; max-width: none; border: 1px solid var(--border); border-radius: .45rem; padding: .35rem .55rem; background: color-mix(in srgb, var(--card) 84%, transparent); font-family: var(--font-geist-mono); font-size: .9rem; line-height: 1.5; color: var(--muted-foreground); white-space: normal; }
+.experience-entry-current .experience-period { border-color: color-mix(in srgb, var(--accent) 48%, var(--border)); color: var(--accent); }
+.experience-card-meta { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1rem; }
+.experience-card { position: relative; min-width: 0; border: 1px solid var(--border); border-radius: .75rem; padding: 1.35rem; background: color-mix(in srgb, var(--card) 92%, var(--background)); box-shadow: 0 .6rem 1.8rem color-mix(in srgb, var(--foreground) 4%, transparent); transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease; }
+.experience-entry-current .experience-card { background: color-mix(in srgb, var(--accent) 4%, var(--card)); }
+.experience-card:hover { border-color: color-mix(in srgb, var(--accent) 58%, var(--border)); box-shadow: 0 .8rem 2rem color-mix(in srgb, var(--foreground) 7%, transparent); transform: translateY(-2px); }
+.experience-card-top { display: block; }
+.experience-card-top > div:first-child { min-width: 0; }
+.experience-card h3 { font-family: var(--font-display); font-size: clamp(1.55rem, 2.1vw, 1.95rem); font-weight: 700; line-height: 1.15; color: var(--foreground); }
+.experience-company-line { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin-top: .55rem; }
+.experience-company-line strong { font-family: var(--font-plus-jakarta-sans); font-size: 1.125rem; font-weight: 700; color: var(--foreground); }
+.experience-employment-type { border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border)); border-radius: .35rem; padding: .15rem .48rem; background: color-mix(in srgb, var(--accent) 8%, var(--card)); font-family: var(--font-plus-jakarta-sans); font-size: .86rem; font-weight: 600; color: var(--accent); }
+.experience-current-badge { display: inline-flex; align-items: center; gap: .4rem; border: 1px solid color-mix(in srgb, var(--playful-green) 42%, var(--border)); border-radius: 999px; padding: .3rem .6rem; background: color-mix(in srgb, var(--playful-green) 9%, var(--card)); font-size: .86rem; font-weight: 600; color: var(--playful-green); }
+.experience-current-badge > span { width: .4rem; height: .4rem; border-radius: 50%; background: currentColor; }
+.experience-context { display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; margin-top: 1.1rem; }
+.experience-context li { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem; font-size: 1rem; color: var(--muted-foreground); }
+.experience-context-label { font-family: var(--font-geist-mono); font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+.experience-summary { max-width: 60rem; margin-top: 1.1rem; border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent); padding-top: .95rem; font-size: 1.0625rem; line-height: 1.75; color: var(--muted-foreground); }
 .experience-tech { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.1rem; }
-.experience-tech li { border: 1px solid var(--border); padding: .28rem .45rem; font-family: var(--font-geist-mono); font-size: .58rem; color: var(--foreground); }
-.achievements-section { background: transparent; }
-.achievement-grid { display: grid; gap: .85rem; margin-top: 3rem; }
-.achievement-card { position: relative; display: flex; min-height: 15rem; flex-direction: column; overflow: hidden; border: 1px solid var(--border); border-radius: .75rem; padding: 1.25rem; background: var(--card); transition: transform 180ms ease, border-color 180ms ease; }
-.achievement-card::after { position: absolute; right: .9rem; bottom: .9rem; color: color-mix(in srgb, var(--tarot) 50%, transparent); font-family: var(--font-display); font-size: 4rem; line-height: 1; content: "✦"; }
-.achievement-card:hover { border-color: var(--tarot); transform: translateY(-.25rem) rotate(-.2deg); }
-.achievement-card-top { display: flex; align-items: center; justify-content: space-between; color: var(--tarot); }
-.achievement-card-top span { border-radius: .3rem; padding: .25rem .4rem; background: color-mix(in srgb, var(--tarot) 16%, transparent); font-family: var(--font-geist-mono); font-size: .65rem; }
-.achievement-card h3 { margin-top: 2.5rem; }
-.achievement-card p { max-width: 15rem; margin-top: .7rem; font-size: .78rem; line-height: 1.55; color: var(--muted-foreground); }
-.achievement-year { margin-top: auto; font-family: var(--font-geist-mono); font-size: .65rem; color: var(--accent); }
-
+.experience-tech li { border: 1px solid var(--border); padding: .32rem .5rem; font-family: var(--font-geist-mono); font-size: .86rem; color: var(--foreground); }
 @media (max-width: 1023px) {
   .hero-canvas { min-height: 0; }
   .hero-landscape { bottom: 3%; }
@@ -444,9 +454,10 @@ body {
   .hero-intro-grid { grid-template-columns: minmax(0, 1fr) minmax(220px, .55fr); padding-inline: 1.25rem; }
   .hero-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-inline: .65rem; }
   .site-footer { grid-template-columns: 1fr auto auto; align-items: center; }
-  .experience-entry { grid-template-columns: 7rem minmax(0, 1fr); align-items: start; }
-  .experience-period { padding-top: 1.25rem; }
-  .achievement-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .experience-entry { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 1rem; }
+  .experience-card-meta { position: static; display: flex; margin-bottom: 1rem; pointer-events: auto; }
+  .experience-current-badge { position: static; }
+  .experience-entry-current .experience-card-top > div:first-child { padding-right: 0; }
 }
 
 @media (min-width: 1024px) {
@@ -476,6 +487,11 @@ body {
   .site-footer { text-align: center; }
   .site-footer .text-right { text-align: center; }
   .site-footer > div:nth-child(2) { justify-content: center; }
+  .experience-card { grid-column: 1; }
+  .experience-card-meta { position: static; display: flex; margin-bottom: .9rem; pointer-events: auto; }
+  .experience-period { border: 0; border-radius: 0; padding: 0; background: transparent; }
+  .experience-current-badge { position: static; }
+  .experience-entry-current .experience-card-top > div:first-child { padding-right: 0; }
   .hero-fun-card { grid-template-columns: 3.25rem 1px minmax(0, 1fr); gap: .85rem; padding: .85rem; }
   .hero-tarot-scene { min-height: 26rem; }
   .hero-tarot-card { width: min(calc(100% - 1.5rem), 15.5rem); }
@@ -510,8 +526,8 @@ body {
 }
 
 @media (max-width: 480px) {
-  .contact-terminal { margin-top: 1.5rem; border-radius: .35rem; font-size: .72rem; }
-  .contact-terminal-header { justify-content: flex-end; font-size: .55rem; }
+  .contact-terminal { margin-top: 1.5rem; border-radius: .35rem; font-size: .98rem; }
+  .contact-terminal-header { justify-content: flex-end; font-size: .8rem; }
   .contact-terminal-transcript { min-height: 14rem; max-height: 20rem; padding: .9rem 1rem; }
   .contact-terminal-input { grid-template-columns: minmax(0, 1fr) max-content; padding: .8rem 1rem; }
   .contact-terminal-input > span { grid-column: 1 / -1; }

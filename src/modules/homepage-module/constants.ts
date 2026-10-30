@@ -1,33 +1,97 @@
-import type { AchievementEntry, ExperienceEntry } from "./interfaces";
+import type { EducationEntry, ExperienceEntry } from "./interfaces";
 
-export const experienceEntries: ExperienceEntry[] = [
+export const educationEntries: EducationEntry[] = [
   {
-    period: "Current",
-    role: "Software engineering",
-    organization: "Add your organization",
-    summary: "Add a concise description of your role, the product, and the meaningful outcomes you created.",
-    technologies: ["TypeScript", "Next.js", "Product systems"],
+    id: "university-of-indonesia",
+    institution: "Universitas Indonesia",
+    program: "Computer Science",
+    period: "August 2023 – Present",
   },
   {
-    period: "Previous",
-    role: "Data and analytics",
-    organization: "Add your organization",
-    summary: "Add the work that turned data into useful decisions, clearer processes, or better experiences.",
-    technologies: ["Python", "SQL", "Data storytelling"],
+    id: "institut-teknologi-bandung",
+    institution: "Institut Teknologi Bandung",
+    program: "Pharmaceutical Science and Technology",
+    period: "Aug 2022 – May 2023",
   },
   {
-    period: "Earlier",
-    role: "Product building",
-    organization: "Add your organization",
-    summary: "Add a short note about the systems, experiments, or collaborations that shaped your practice.",
-    technologies: ["Research", "Automation", "Collaboration"],
+    id: "sman-68-jakarta",
+    institution: "SMAN 68 JAKARTA",
+    program: "Natural Sciences",
+    period: "Jul 2019 – Apr 2022",
   },
 ];
 
-export const achievementEntries: AchievementEntry[] = [
-  { number: "01", title: "Add an achievement", context: "Competition, recognition, or milestone", year: "Year" },
-  { number: "02", title: "Add an achievement", context: "Certification, fellowship, or program", year: "Year" },
-  { number: "03", title: "Add an achievement", context: "Community contribution or selected work", year: "Year" },
+export const experienceEntries: ExperienceEntry[] = [
+  {
+    period: "Sep 2024 – Present",
+    role: "Junior Programmer",
+    organization: "Hare Innovation Limited Company",
+    employmentType: "Internship",
+    location: "London Area, United Kingdom",
+    workArrangement: "Remote",
+    summary:
+      "Contribute to the development, maintenance, and modernization of web applications, focusing on full-stack development, system integration, and improving application performance. Collaborate with cross-functional teams to deliver scalable and maintainable solutions.",
+  },
+  {
+    period: "May 2026 – Jun 2026",
+    role: "Solution Architect Intern",
+    organization: "Bank Mandiri",
+    employmentType: "Internship",
+    location: "Jakarta Metropolitan Area",
+    workArrangement: "On-site",
+    summary:
+      "Supported enterprise banking infrastructure and digital channel operations by working with technologies including OpenShift, Redis, Kafka, and Control-M. Gained hands-on experience in system architecture, application monitoring, and enterprise integration.",
+  },
+  {
+    period: "Dec 2025 – Mar 2026",
+    role: "SAP Project Intern",
+    organization: "Accenture",
+    employmentType: "Internship",
+    location: "Jakarta, Indonesia",
+    workArrangement: "On-site",
+    summary:
+      "Supported SAP data migration activities, including data profiling, cleansing, validation, and reconciliation of over 10,000 procurement records. Utilized SQL and Python to improve data quality and ensure consistency throughout the migration process.",
+  },
+  {
+    period: "Jul 2025 – Jan 2026",
+    role: "Teaching Assistant – Platform Based Programming (International Class)",
+    organization: "Universitas Indonesia",
+    employmentType: "Part-time",
+    location: "Depok, West Java, Indonesia",
+    workArrangement: "Hybrid",
+    summary:
+      "Mentored students in mobile application development using Flutter and web development using Django. Assisted with practical sessions, technical troubleshooting, and evaluating programming assignments.",
+  },
+  {
+    period: "Jan 2025 – Aug 2025",
+    role: "Teaching Assistant – Foundations of Programming 2",
+    organization: "Universitas Indonesia",
+    employmentType: "Part-time",
+    location: "Depok, West Java, Indonesia",
+    workArrangement: "Hybrid",
+    summary:
+      "Guided students in understanding object-oriented programming and fundamental software development concepts using Java. Provided technical assistance during laboratory sessions and supported students in developing problem-solving skills.",
+  },
+  {
+    period: "Jun 2025 – Aug 2025",
+    role: "Full-stack Developer Intern",
+    organization: "PT Fungsitama Cipta Teknologi",
+    employmentType: "Internship",
+    location: "Jakarta, Indonesia",
+    workArrangement: "Remote",
+    summary:
+      "Contributed to full-stack web application development, including frontend implementation, backend functionality, and API integration. Collaborated with the development team to implement features, troubleshoot issues, and improve application usability.",
+  },
+  {
+    period: "Sep 2024 – Jun 2025",
+    role: "Web Developer",
+    organization: "Economic Space",
+    employmentType: "Part-time",
+    location: "Surabaya, East Java, Indonesia",
+    workArrangement: "Remote",
+    summary:
+      "Developed and maintained web interfaces with a focus on responsive design, user experience, and application functionality. Collaborated remotely to implement website improvements and support ongoing development requirements.",
+  },
 ];
 
 export const techStackIcons: Record<string, string> = {

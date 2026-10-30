@@ -1,63 +1,56 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import {
+  CONTACT_FIELD_ORDER,
+  CONTACT_MAX_LENGTHS,
+  CONTACT_PROMPTS,
+  INITIAL_CONTACT_ANSWERS,
+  INITIAL_CONTACT_TRANSCRIPT,
+} from "../constants";
+import type { ContactApiResponse } from "@/service/contact/interfaces";
+import type {
+  ContactFormStatus,
+  ContactTranscriptLine,
+} from "../interfaces";
+import type { ContactAnswers } from "../schemas";
+import { validateContactAnswer } from "../utils";
 
-type FormStatus = "collecting" | "sending" | "success" | "error";
-type FieldName = "name" | "email" | "subject" | "message";
-
-interface TerminalLine {
-  kind: "command" | "prompt" | "reply" | "status" | "error" | "success";
-  text: string;
-}
-
-const prompts: Record<FieldName, string> = {
-  name: "What should I call you?",
-  email: "What is the best email to reply to?",
-  subject: "What would you like to talk about?",
-  message: "Write your transmission.",
-};
-
-const fieldOrder: FieldName[] = ["name", "email", "subject", "message"];
-
-function validateAnswer(field: FieldName, value: string) {
-  if (!value.trim()) return "That response is required.";
-  if (field === "name") {
-    if (value.trim().length > 20) return "Name must be 20 characters or fewer.";
-    if (!/^[\p{L}\s'-]+$/u.test(value.trim())) return "Name can only use letters, spaces, apostrophes, and hyphens.";
-  }
-  if (field === "email" && value.trim().length > 40) return "Email must be 40 characters or fewer.";
-  if (field === "email" && !/^\S+@\S+\.\S+$/.test(value.trim())) return "That email format does not look right.";
-  if (field === "message" && value.trim().length > 100) return "Message must be 100 characters or fewer.";
-  return null;
+function isContactApiResponse(payload: unknown): payload is ContactApiResponse {
+  return (
+    typeof payload === "object" &&
+    payload !== null &&
+    "message" in payload &&
+    typeof payload.message === "string"
+  );
 }
 
 export function ContactForm() {
-  const [status, setStatus] = useState<FormStatus>("collecting");
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const [status, setStatus] = useState<ContactFormStatus>("collecting");
   const [step, setStep] = useState(0);
   const [draft, setDraft] = useState("");
-  const [answers, setAnswers] = useState<Record<FieldName, string>>({ name: "", email: "", subject: "", message: "" });
-  const [transcript, setTranscript] = useState<TerminalLine[]>([
-    { kind: "command", text: "grace@portfolio:~$ start-contact --interactive" },
-    { kind: "status", text: "> secure channel open" },
-    { kind: "prompt", text: `> ${prompts.name}` },
-  ]);
+  const [answers, setAnswers] = useState<ContactAnswers>(INITIAL_CONTACT_ANSWERS);
+  const [transcript, setTranscript] = useState<ContactTranscriptLine[]>(
+    INITIAL_CONTACT_TRANSCRIPT,
+  );
 
-  const currentField = fieldOrder[step];
+  const currentField = CONTACT_FIELD_ORDER[step];
   const isMessageStep = currentField === "message";
-  const maxLength = currentField === "name" ? 20 : currentField === "email" ? 40 : currentField === "message" ? 100 : undefined;
+  const maxLength = CONTACT_MAX_LENGTHS[currentField];
 
-  async function sendMessage(nextAnswers: Record<FieldName, string>) {
+  async function sendMessage(nextAnswers: ContactAnswers, honeypot: string) {
     setStatus("sending");
     setTranscript((lines) => [...lines, { kind: "status", text: "> validating transmission... ok" }, { kind: "status", text: "> sending to Grace's inbox..." }]);
 
     const data = new FormData();
     Object.entries(nextAnswers).forEach(([key, value]) => data.append(key, value));
-    data.append("website", "");
+    data.append("website", honeypot);
 
     try {
       const response = await fetch("/api/contact", { method: "POST", body: data });
       const payload: unknown = await response.json();
-      const responseMessage = typeof payload === "object" && payload !== null && "message" in payload && typeof payload.message === "string"
+      const responseMessage = isContactApiResponse(payload)
         ? payload.message
         : "Unable to send your message right now.";
 
@@ -80,9 +73,9 @@ export function ContactForm() {
     if (status !== "collecting") return;
 
     const answer = draft.trim();
-    const error = validateAnswer(currentField, answer);
+    const error = validateContactAnswer(currentField, answer);
     if (error) {
-      setTranscript((lines) => [...lines, { kind: "error", text: `> ${error}` }, { kind: "prompt", text: `> ${prompts[currentField]}` }]);
+      setTranscript((lines) => [...lines, { kind: "error", text: `> ${error}` }, { kind: "prompt", text: `> ${CONTACT_PROMPTS[currentField]}` }]);
       return;
     }
 
@@ -91,15 +84,15 @@ export function ContactForm() {
     setDraft("");
     setTranscript((lines) => [...lines, { kind: "reply", text: `$ ${answer}` }, { kind: "status", text: `> ${currentField} accepted ✓` }]);
 
-    if (step === fieldOrder.length - 1) {
-      void sendMessage(nextAnswers);
+    if (step === CONTACT_FIELD_ORDER.length - 1) {
+      void sendMessage(nextAnswers, honeypotRef.current?.value.trim() ?? "");
       return;
     }
 
     const nextStep = step + 1;
-    const nextField = fieldOrder[nextStep];
+    const nextField = CONTACT_FIELD_ORDER[nextStep];
     setStep(nextStep);
-    setTranscript((lines) => [...lines, { kind: "prompt", text: `> ${prompts[nextField]}` }]);
+    setTranscript((lines) => [...lines, { kind: "prompt", text: `> ${CONTACT_PROMPTS[nextField]}` }]);
   }
 
   return (
@@ -109,7 +102,16 @@ export function ContactForm() {
       </div>
       {status === "collecting" && (
         <form className={isMessageStep ? "contact-terminal-input contact-terminal-input-message" : "contact-terminal-input"} onSubmit={handleSubmit}>
-          <label className="sr-only" htmlFor="contact-terminal-answer">{prompts[currentField]}</label>
+          <input
+            ref={honeypotRef}
+            className="contact-honeypot"
+            type="text"
+            name="website"
+            autoComplete="off"
+            tabIndex={-1}
+            aria-hidden="true"
+          />
+          <label className="sr-only" htmlFor="contact-terminal-answer">{CONTACT_PROMPTS[currentField]}</label>
           <span aria-hidden="true">visitor@terminal:~$</span>
           {isMessageStep ? (
             <textarea id="contact-terminal-answer" value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="type your message..." rows={4} maxLength={maxLength} autoFocus />
@@ -120,7 +122,7 @@ export function ContactForm() {
         </form>
       )}
       {status === "sending" && <p className="contact-terminal-wait">&gt; awaiting delivery response...</p>}
-      {status === "collecting" && <p className="contact-terminal-step">step {step + 1} of {fieldOrder.length} · {currentField}</p>}
+      {status === "collecting" && <p className="contact-terminal-step">step {step + 1} of {CONTACT_FIELD_ORDER.length} · {currentField}</p>}
     </section>
   );
 }

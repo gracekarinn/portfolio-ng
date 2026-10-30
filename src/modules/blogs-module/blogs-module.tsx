@@ -7,7 +7,7 @@ export function BlogsModule() {
         <div className="section-command"><span><span className="text-accent">grace@portfolio:~$</span> ls ./blogs</span><BookOpenText size={16} aria-hidden="true" /></div>
         <div className="section-heading">
           <p className="section-eyebrow">Notes in progress</p>
-          <h1 id="blogs-title" className="font-display">Writing archive</h1>
+          <h1 id="blogs-title" className="font-sans font-bold text-5xl leading-[0.95] tracking-[-0.045em] sm:text-6xl">Writing Archive</h1>
           <p>Notes on engineering, data, learning, and the small discoveries that happen while building in public.</p>
         </div>
       </section>

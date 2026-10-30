@@ -2,15 +2,17 @@ export interface ExperienceEntry {
   period: string;
   role: string;
   organization: string;
-  summary: string;
-  technologies: string[];
+  employmentType?: string;
+  location?: string;
+  workArrangement?: string;
+  summary?: string;
 }
 
-export interface AchievementEntry {
-  number: string;
-  title: string;
-  context: string;
-  year: string;
+export interface EducationEntry {
+  id: string;
+  institution: string;
+  program: string;
+  period: string;
 }
 
 export interface TarotCardReading {

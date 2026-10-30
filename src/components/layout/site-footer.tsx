@@ -3,7 +3,7 @@ import { FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer border-t border-border font-mono text-[0.62rem] text-muted-foreground">
+    <footer className="site-footer border-t border-border font-mono text-xs text-muted-foreground">
       <div><p><span className="text-accent">grace@portfolio:~$</span> pwd</p><p className="mt-2">Grace Karina — building things that matter.</p></div>
       <div className="flex gap-2" aria-label="Social links">
         <a href="https://www.instagram.com/" className="hero-social focus-ring" aria-label="Instagram"><FaInstagram size={14} aria-hidden="true" /></a>
